@@ -1,0 +1,13 @@
+Desgin a REST API -JSON
+
+GET /users -LIST ALL users
+
+GET /users/1 -get the user with id 1
+
+POST /users - create a new user
+
+PATCH /users/1 - will update specifc user
+
+DELETE /users/1 - Dlete the USer with id 1
+
+
