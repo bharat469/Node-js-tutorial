@@ -84,12 +84,14 @@ app
 //create a account
 app.post("/api/users", (req, res) => {
   const body = req.body;
+if (!body || !body.first_name || !body.email) {
+  res.status(404).json({ status: "404 Error wrong requesty" });
+}
+usersData.push({ ...body, id: usersData.length + 1 });
 
-  usersData.push({ ...body, id: usersData.length + 1 });
-
-  fs.writeFile("MOCK_DATA.json", JSON.stringify(usersData), (err, data) => {
-    res.json({ status: "NEW ENTRY CREATED", id: usersData.length });
-  });
+fs.writeFile("MOCK_DATA.json", JSON.stringify(usersData), (err, data) => {
+  res.status(201).json({ status: "NEW ENTRY CREATED", id: usersData.length });
+});
 });
 
 app.listen(port, () => console.log("server has been started"));
